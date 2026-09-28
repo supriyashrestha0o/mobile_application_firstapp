@@ -10,7 +10,7 @@ class democlass extends StatefulWidget{
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text("Hello class section  D"),
+      child: Text("Hello class  section  D"),
     );
   }
 
