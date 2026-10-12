@@ -1,13 +1,520 @@
+// import 'package:flutter/material.dart';
+//
+// class dashboard extends StatefulWidget {
+//   const dashboard({super.key});
+//
+//   @override
+//   State<dashboard> createState() => _dashboardState();
+// }
+//
+// class _dashboardState extends State<dashboard> {
+//   @override
+//   Widget build(BuildContext context) {
+//     var size = MediaQuery.of(context).size;
+//     return Scaffold(
+//       appBar: AppBar(),
+//       body: Column(
+//         children: [
+//           SingleChildScrollView(
+//             scrollDirection: Axis.horizontal,
+//             child: Row(
+//               children: [
+//                 //horizontal card
+//                 Stack(
+//                   children: [
+//                     Container(
+//                         height: size.height / 4.5,
+//                         width: size.width / 1.4,
+//                         margin: EdgeInsets.all(20),
+//                         decoration: BoxDecoration(
+//                           color: Colors.black87,
+//                           borderRadius: BorderRadius.circular(20),
+//                         ),
+//                         child: ClipRRect(
+//                           borderRadius: BorderRadius.circular(20),
+//                           child: Image.network(
+//                             fit: BoxFit.cover,
+//                             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP8lVYyABTGUCQG0dwSZ0HPAc_VKznnrOD2wE9U-wJHrTK_OBdwx6rf1Y&s=10",
+//                           ),
+//                         )
+//                     ),
+//                     Container(
+//                       height: size.height / 4.5,
+//                       width: size.width / 1.4,
+//                       margin: EdgeInsets.all(20),
+//                       decoration: BoxDecoration(
+//                         color: Colors.black12,
+//                         borderRadius: BorderRadius.circular(20),
+//                       ),
+//                     ),
+//
+//                     Positioned(
+//                       bottom: 75,
+//                       left: 55,
+//                       child: Container(
+//                         width: size.width / 2,
+//                         child: Text(
+//                           'Hot News of The Day, Supriya wishes you Happy Dashain 2081',
+//                           overflow: TextOverflow.ellipsis,
+//                           maxLines: 2,
+//                           style: TextStyle(
+//                             color: Colors.white,
+//                             fontSize: 18,
+//                             fontWeight: FontWeight.bold,
+//                           ),
+//                         ),
+//                       ),
+//                     ),
+//                     Positioned(
+//                       bottom: 45,
+//                       left: 55,
+//                       child: Text(
+//                         '7th October, 2026',
+//                         style: TextStyle(
+//                           color: Colors.pink,
+//                           fontSize: 18,
+//                           fontWeight: FontWeight.bold,
+//                         ),
+//                       ),
+//                     ),
+//                     Positioned(
+//                       bottom: 65, right: 55,
+//                       child: Icon(
+//                         Icons.play_circle_fill_rounded,
+//                         color: Colors.white, size: 40,
+//                       ),
+//                     ),
+//                   ],
+//                 ),
+//                 Stack(
+//                   children: [
+//                     Container(
+//                         height: size.height / 4.5,
+//                         width: size.width / 1.4,
+//                         margin: EdgeInsets.all(20),
+//                         decoration: BoxDecoration(
+//                           color: Colors.black87,
+//                           borderRadius: BorderRadius.circular(20),
+//                         ),
+//                         child: ClipRRect(
+//                           borderRadius: BorderRadius.circular(20),
+//                           child: Image.network(
+//                             fit: BoxFit.cover,
+//                             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP8lVYyABTGUCQG0dwSZ0HPAc_VKznnrOD2wE9U-wJHrTK_OBdwx6rf1Y&s=10",
+//                           ),
+//                         )
+//                     ),
+//                     Container(
+//                       height: size.height / 4.5,
+//                       width: size.width / 1.4,
+//                       margin: EdgeInsets.all(20),
+//                       decoration: BoxDecoration(
+//                         color: Colors.black12,
+//                         borderRadius: BorderRadius.circular(20),
+//                       ),
+//                     ),
+//
+//                     Positioned(
+//                       bottom: 75,
+//                       left: 55,
+//                       child: Container(
+//                         width: size.width / 2,
+//                         child: Text(
+//                           'Hot News of The Day, Supriya wishes you Happy Dashain 2081',
+//                           overflow: TextOverflow.ellipsis,
+//                           maxLines: 2,
+//                           style: TextStyle(
+//                             color: Colors.white,
+//                             fontSize: 18,
+//                             fontWeight: FontWeight.bold,
+//                           ),
+//                         ),
+//                       ),
+//                     ),
+//                     Positioned(
+//                       bottom: 45,
+//                       left: 55,
+//                       child: Text(
+//                         '7th October, 2026',
+//                         style: TextStyle(
+//                           color: Colors.pink,
+//                           fontSize: 18,
+//                           fontWeight: FontWeight.bold,
+//                         ),
+//                       ),
+//                     ),
+//                     Positioned(
+//                       bottom: 65, right: 55,
+//                       child: Icon(
+//                         Icons.play_circle_fill_rounded,
+//                         color: Colors.white, size: 40,
+//                       ),
+//                     ),
+//                   ],
+//                 ),
+//                 Stack(
+//                   children: [
+//                     Container(
+//                         height: size.height / 4.5,
+//                         width: size.width / 1.4,
+//                         margin: EdgeInsets.all(20),
+//                         decoration: BoxDecoration(
+//                           color: Colors.black87,
+//                           borderRadius: BorderRadius.circular(20),
+//                         ),
+//                         child: ClipRRect(
+//                           borderRadius: BorderRadius.circular(20),
+//                           child: Image.network(
+//                             fit: BoxFit.cover,
+//                             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP8lVYyABTGUCQG0dwSZ0HPAc_VKznnrOD2wE9U-wJHrTK_OBdwx6rf1Y&s=10",
+//                           ),
+//                         )
+//                     ),
+//                     Container(
+//                       height: size.height / 4.5,
+//                       width: size.width / 1.4,
+//                       margin: EdgeInsets.all(20),
+//                       decoration: BoxDecoration(
+//                         color: Colors.black12,
+//                         borderRadius: BorderRadius.circular(20),
+//                       ),
+//                     ),
+//
+//                     Positioned(
+//                       bottom: 75,
+//                       left: 55,
+//                       child: Container(
+//                         width: size.width / 2,
+//                         child: Text(
+//                           'Hot News of The Day, Supriya wishes you Happy Dashain 2081',
+//                           overflow: TextOverflow.ellipsis,
+//                           maxLines: 2,
+//                           style: TextStyle(
+//                             color: Colors.white,
+//                             fontSize: 18,
+//                             fontWeight: FontWeight.bold,
+//                           ),
+//                         ),
+//                       ),
+//                     ),
+//                     Positioned(
+//                       bottom: 45,
+//                       left: 55,
+//                       child: Text(
+//                         '7th October, 2026',
+//                         style: TextStyle(
+//                           color: Colors.pink,
+//                           fontSize: 18,
+//                           fontWeight: FontWeight.bold,
+//                         ),
+//                       ),
+//                     ),
+//                     Positioned(
+//                       bottom: 65, right: 55,
+//                       child: Icon(
+//                         Icons.play_circle_fill_rounded,
+//                         color: Colors.white, size: 40,
+//                       ),
+//                     ),
+//                   ],
+//                 ),
+//                 Stack(
+//                   children: [
+//                     Container(
+//                         height: size.height / 4.5,
+//                         width: size.width / 1.4,
+//                         margin: EdgeInsets.all(20),
+//                         decoration: BoxDecoration(
+//                           color: Colors.black87,
+//                           borderRadius: BorderRadius.circular(20),
+//                         ),
+//                         child: ClipRRect(
+//                           borderRadius: BorderRadius.circular(20),
+//                           child: Image.network(
+//                             fit: BoxFit.cover,
+//                             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP8lVYyABTGUCQG0dwSZ0HPAc_VKznnrOD2wE9U-wJHrTK_OBdwx6rf1Y&s=10",
+//                           ),
+//                         )
+//                     ),
+//                     Container(
+//                       height: size.height / 4.5,
+//                       width: size.width / 1.4,
+//                       margin: EdgeInsets.all(20),
+//                       decoration: BoxDecoration(
+//                         color: Colors.black12,
+//                         borderRadius: BorderRadius.circular(20),
+//                       ),
+//                     ),
+//
+//                     Positioned(
+//                       bottom: 75,
+//                       left: 55,
+//                       child: Container(
+//                         width: size.width / 2,
+//                         child: Text(
+//                           'Hot News of The Day, Supriya wishes you Happy Dashain 2081',
+//                           overflow: TextOverflow.ellipsis,
+//                           maxLines: 2,
+//                           style: TextStyle(
+//                             color: Colors.white,
+//                             fontSize: 18,
+//                             fontWeight: FontWeight.bold,
+//                           ),
+//                         ),
+//                       ),
+//                     ),
+//                     Positioned(
+//                       bottom: 45,
+//                       left: 55,
+//                       child: Text(
+//                         '7th October, 2026',
+//                         style: TextStyle(
+//                           color: Colors.pink,
+//                           fontSize: 18,
+//                           fontWeight: FontWeight.bold,
+//                         ),
+//                       ),
+//                     ),
+//                     Positioned(
+//                       bottom: 65, right: 55,
+//                       child: Icon(
+//                         Icons.play_circle_fill_rounded,
+//                         color: Colors.white, size: 40,
+//                       ),
+//                     ),
+//                   ],
+//                 ),
+//                 Stack(
+//                   children: [
+//                     Container(
+//                         height: size.height / 4.5,
+//                         width: size.width / 1.4,
+//                         margin: EdgeInsets.all(20),
+//                         decoration: BoxDecoration(
+//                           color: Colors.black87,
+//                           borderRadius: BorderRadius.circular(20),
+//                         ),
+//                         child: ClipRRect(
+//                           borderRadius: BorderRadius.circular(20),
+//                           child: Image.network(
+//                             fit: BoxFit.cover,
+//                             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP8lVYyABTGUCQG0dwSZ0HPAc_VKznnrOD2wE9U-wJHrTK_OBdwx6rf1Y&s=10",
+//                           ),
+//                         )
+//                     ),
+//                     Container(
+//                       height: size.height / 4.5,
+//                       width: size.width / 1.4,
+//                       margin: EdgeInsets.all(20),
+//                       decoration: BoxDecoration(
+//                         color: Colors.black12,
+//                         borderRadius: BorderRadius.circular(20),
+//                       ),
+//                     ),
+//
+//                     Positioned(
+//                       bottom: 75,
+//                       left: 55,
+//                       child: Container(
+//                         width: size.width / 2,
+//                         child: Text(
+//                           'Hot News of The Day, Supriya wishes you Happy Dashain 2081',
+//                           overflow: TextOverflow.ellipsis,
+//                           maxLines: 2,
+//                           style: TextStyle(
+//                             color: Colors.white,
+//                             fontSize: 18,
+//                             fontWeight: FontWeight.bold,
+//                           ),
+//                         ),
+//                       ),
+//                     ),
+//                     Positioned(
+//                       bottom: 45,
+//                       left: 55,
+//                       child: Text(
+//                         '7th October, 2026',
+//                         style: TextStyle(
+//                           color: Colors.pink,
+//                           fontSize: 18,
+//                           fontWeight: FontWeight.bold,
+//                         ),
+//                       ),
+//                     ),
+//                     Positioned(
+//                       bottom: 65, right: 55,
+//                       child: Icon(
+//                         Icons.play_circle_fill_rounded,
+//                         color: Colors.white, size: 40,
+//                       ),
+//                     ),
+//                   ],
+//                 ),
+//
+//               ],
+//             ),
+//           ),
+//           Row(
+//             children: [
+//               Column(
+//                 children: [
+//                   Container(
+//                     height: 120,
+//                     width: 120,
+//                     margin: EdgeInsets.all(15),
+//                     decoration: BoxDecoration(
+//                       color: Colors.black54,
+//                       borderRadius: BorderRadius.circular(20)
+//                     ),
+//                     child: ClipRRect(
+//                       borderRadius: BorderRadiusGeometry.circular(20),
+//                       child: Image.network(fit: BoxFit.cover,
+//                           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP8lVYyABTGUCQG0dwSZ0HPAc_VKznnrOD2wE9U-wJHrTK_OBdwx6rf1Y&s=10https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP8lVYyABTGUCQG0dwSZ0HPAc_VKznnrOD2wE9U-wJHrTK_OBdwx6rf1Y&s=10"),
+//                     )
+//                   )
+//                 ],
+//               )
+//             ]
+//           )
+//         ],
+//       ),
+//     );
+//   }
+// }
+import 'package:news_app/pages/detailpage.dart';
 import 'package:flutter/material.dart';
 
 class dashboard extends StatefulWidget {
   const dashboard({super.key});
 
   @override
-  State<dashboard> createState() => _dashboardState();
+  State<dashboard> createState() => dashboardState();
 }
 
-class _dashboardState extends State<dashboard> {
+class dashboardState extends State<dashboard> {
+
+  horizontallistitem(size, String title,url, date){
+    return GestureDetector(
+      onTap: (){
+        Navigator.of(context).push(
+          MaterialPageRoute<void>(
+            builder: (context) => detailpage(),
+          ),
+        );
+      },
+      child: Stack(
+        children: [
+          Container(
+            height: size.height/4.5,
+            width: size.width/1.4,
+            margin: EdgeInsets.all(15),
+            decoration: BoxDecoration(
+                color: Colors.black38,
+                borderRadius: BorderRadius.circular(20)
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Image.network(fit: BoxFit.cover,
+                  url),
+            ),
+          ),
+          Container(
+            height: size.height/4.5,
+            width: size.width/1.4,
+            margin: EdgeInsets.all(15),
+            decoration: BoxDecoration(
+                color: Colors.black54,
+                borderRadius: BorderRadius.circular(20)
+            ),
+          ),
+          Positioned(
+            bottom: 45,
+            left: 30,
+            child: Container(
+              width: size.width/2,
+              child: Text(title,
+                overflow: TextOverflow.ellipsis,maxLines: 2,
+                style: TextStyle(color: Colors.white,fontSize: 16),),
+            ),
+          ),
+          Positioned(
+            bottom: 20,
+            left: 30,
+            child: Text(date,
+              style: TextStyle(color: Colors.white,fontSize: 16),),
+          ),
+          Positioned(
+              bottom: 30,right: 30,
+              child: Icon(Icons.play_circle_fill_rounded,color:
+              Colors.white,size: 40,))
+        ],
+      ),
+    );
+  }
+
+  static verticallistitem(size, String title, url, date, source){
+    return Row(
+      children: [
+        Stack(
+          children: [
+            Container(
+              height: 120,
+              width: 120,
+              margin: EdgeInsets.all(15),
+              decoration: BoxDecoration(
+                  color: Colors.black54,
+                  borderRadius: BorderRadius.circular(20)
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Image.network(fit: BoxFit.cover,
+                    url),
+              ),
+            ),
+            Container(
+              height: 120,
+              width: 120,
+              margin: EdgeInsets.all(15),
+              child: Center(
+                child: Icon(Icons.play_circle_fill_rounded,
+                  size: 50,color: Colors.white,),
+              ),
+            )
+          ],
+        ),
+        Container(
+          height: 90,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                width: size.width/2,
+                child: Text(title
+                  ,maxLines: 2,overflow: TextOverflow.ellipsis,),
+              ),
+              Row(
+                children: [
+                  Container(
+                    padding: EdgeInsets.only(left: 10,right: 10,
+                        top: 8,bottom: 8),
+                    decoration: BoxDecoration(
+                        color: Colors.red,
+                        borderRadius: BorderRadius.circular(20)
+                    ),
+                    child: Text(source,style: TextStyle(color: Colors.white),),
+                  ),
+                  SizedBox(width: 15,),
+                  Text(date,)
+                ],
+              )
+            ],
+          ),
+        )
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -15,369 +522,75 @@ class _dashboardState extends State<dashboard> {
       appBar: AppBar(),
       body: Column(
         children: [
+          //horizontal scroll items
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
               children: [
-                //horizontal card
-                Stack(
-                  children: [
-                    Container(
-                        height: size.height / 4.5,
-                        width: size.width / 1.4,
-                        margin: EdgeInsets.all(20),
-                        decoration: BoxDecoration(
-                          color: Colors.black87,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Image.network(
-                            fit: BoxFit.cover,
-                            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP8lVYyABTGUCQG0dwSZ0HPAc_VKznnrOD2wE9U-wJHrTK_OBdwx6rf1Y&s=10",
-                          ),
-                        )
-                    ),
-                    Container(
-                      height: size.height / 4.5,
-                      width: size.width / 1.4,
-                      margin: EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        color: Colors.black12,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
 
-                    Positioned(
-                      bottom: 75,
-                      left: 55,
-                      child: Container(
-                        width: size.width / 2,
-                        child: Text(
-                          'Hot News of The Day, Supriya wishes you Happy Dashain 2081',
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 2,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      bottom: 45,
-                      left: 55,
-                      child: Text(
-                        '7th October, 2026',
-                        style: TextStyle(
-                          color: Colors.pink,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      bottom: 65, right: 55,
-                      child: Icon(
-                        Icons.play_circle_fill_rounded,
-                        color: Colors.white, size: 40,
-                      ),
-                    ),
-                  ],
-                ),
-                Stack(
-                  children: [
-                    Container(
-                        height: size.height / 4.5,
-                        width: size.width / 1.4,
-                        margin: EdgeInsets.all(20),
-                        decoration: BoxDecoration(
-                          color: Colors.black87,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Image.network(
-                            fit: BoxFit.cover,
-                            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP8lVYyABTGUCQG0dwSZ0HPAc_VKznnrOD2wE9U-wJHrTK_OBdwx6rf1Y&s=10",
-                          ),
-                        )
-                    ),
-                    Container(
-                      height: size.height / 4.5,
-                      width: size.width / 1.4,
-                      margin: EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        color: Colors.black12,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
+                horizontallistitem(size,
+                    "title happy dashain pcps family skdalsjdajd",
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYNBJaFUb3pMu0XkkBdNkmsaBuZoYsR78LNMLGEdLPig&s=10",
+                    "03 feb 2026"),
+                horizontallistitem(size,
+                    "title happy dashain pcps family skdalsjdajd",
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYNBJaFUb3pMu0XkkBdNkmsaBuZoYsR78LNMLGEdLPig&s=10",
+                    "04 feb 2026"),
+                horizontallistitem(size,
+                    "title happy dashain pcps family skdalsjdajd",
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYNBJaFUb3pMu0XkkBdNkmsaBuZoYsR78LNMLGEdLPig&s=10",
+                    "05 feb 2026"),
+                horizontallistitem(size,
+                    "title happy dashain pcps family skdalsjdajd",
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYNBJaFUb3pMu0XkkBdNkmsaBuZoYsR78LNMLGEdLPig&s=10",
+                    "06 feb 2026"),
 
-                    Positioned(
-                      bottom: 75,
-                      left: 55,
-                      child: Container(
-                        width: size.width / 2,
-                        child: Text(
-                          'Hot News of The Day, Supriya wishes you Happy Dashain 2081',
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 2,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      bottom: 45,
-                      left: 55,
-                      child: Text(
-                        '7th October, 2026',
-                        style: TextStyle(
-                          color: Colors.pink,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      bottom: 65, right: 55,
-                      child: Icon(
-                        Icons.play_circle_fill_rounded,
-                        color: Colors.white, size: 40,
-                      ),
-                    ),
-                  ],
-                ),
-                Stack(
-                  children: [
-                    Container(
-                        height: size.height / 4.5,
-                        width: size.width / 1.4,
-                        margin: EdgeInsets.all(20),
-                        decoration: BoxDecoration(
-                          color: Colors.black87,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Image.network(
-                            fit: BoxFit.cover,
-                            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP8lVYyABTGUCQG0dwSZ0HPAc_VKznnrOD2wE9U-wJHrTK_OBdwx6rf1Y&s=10",
-                          ),
-                        )
-                    ),
-                    Container(
-                      height: size.height / 4.5,
-                      width: size.width / 1.4,
-                      margin: EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        color: Colors.black12,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
 
-                    Positioned(
-                      bottom: 75,
-                      left: 55,
-                      child: Container(
-                        width: size.width / 2,
-                        child: Text(
-                          'Hot News of The Day, Supriya wishes you Happy Dashain 2081',
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 2,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      bottom: 45,
-                      left: 55,
-                      child: Text(
-                        '7th October, 2026',
-                        style: TextStyle(
-                          color: Colors.pink,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      bottom: 65, right: 55,
-                      child: Icon(
-                        Icons.play_circle_fill_rounded,
-                        color: Colors.white, size: 40,
-                      ),
-                    ),
-                  ],
-                ),
-                Stack(
-                  children: [
-                    Container(
-                        height: size.height / 4.5,
-                        width: size.width / 1.4,
-                        margin: EdgeInsets.all(20),
-                        decoration: BoxDecoration(
-                          color: Colors.black87,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Image.network(
-                            fit: BoxFit.cover,
-                            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP8lVYyABTGUCQG0dwSZ0HPAc_VKznnrOD2wE9U-wJHrTK_OBdwx6rf1Y&s=10",
-                          ),
-                        )
-                    ),
-                    Container(
-                      height: size.height / 4.5,
-                      width: size.width / 1.4,
-                      margin: EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        color: Colors.black12,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
-
-                    Positioned(
-                      bottom: 75,
-                      left: 55,
-                      child: Container(
-                        width: size.width / 2,
-                        child: Text(
-                          'Hot News of The Day, Supriya wishes you Happy Dashain 2081',
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 2,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      bottom: 45,
-                      left: 55,
-                      child: Text(
-                        '7th October, 2026',
-                        style: TextStyle(
-                          color: Colors.pink,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      bottom: 65, right: 55,
-                      child: Icon(
-                        Icons.play_circle_fill_rounded,
-                        color: Colors.white, size: 40,
-                      ),
-                    ),
-                  ],
-                ),
-                Stack(
-                  children: [
-                    Container(
-                        height: size.height / 4.5,
-                        width: size.width / 1.4,
-                        margin: EdgeInsets.all(20),
-                        decoration: BoxDecoration(
-                          color: Colors.black87,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Image.network(
-                            fit: BoxFit.cover,
-                            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP8lVYyABTGUCQG0dwSZ0HPAc_VKznnrOD2wE9U-wJHrTK_OBdwx6rf1Y&s=10",
-                          ),
-                        )
-                    ),
-                    Container(
-                      height: size.height / 4.5,
-                      width: size.width / 1.4,
-                      margin: EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        color: Colors.black12,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
-
-                    Positioned(
-                      bottom: 75,
-                      left: 55,
-                      child: Container(
-                        width: size.width / 2,
-                        child: Text(
-                          'Hot News of The Day, Supriya wishes you Happy Dashain 2081',
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 2,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      bottom: 45,
-                      left: 55,
-                      child: Text(
-                        '7th October, 2026',
-                        style: TextStyle(
-                          color: Colors.pink,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      bottom: 65, right: 55,
-                      child: Icon(
-                        Icons.play_circle_fill_rounded,
-                        color: Colors.white, size: 40,
-                      ),
-                    ),
-                  ],
-                ),
 
               ],
             ),
           ),
-          Row(
-            children: [
-              Column(
+
+          //vertical scroll items
+          Container(
+            height: size.height/1.7,
+            child: SingleChildScrollView(
+              child: Column(
                 children: [
-                  Container(
-                    height: 120,
-                    width: 120,
-                    margin: EdgeInsets.all(15),
-                    decoration: BoxDecoration(
-                      color: Colors.black54,
-                      borderRadius: BorderRadius.circular(20)
-                    ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadiusGeometry.circular(20),
-                      child: Image.network(fit: BoxFit.cover,
-                          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP8lVYyABTGUCQG0dwSZ0HPAc_VKznnrOD2wE9U-wJHrTK_OBdwx6rf1Y&s=10https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP8lVYyABTGUCQG0dwSZ0HPAc_VKznnrOD2wE9U-wJHrTK_OBdwx6rf1Y&s=10"),
-                    )
-                  )
+                  verticallistitem(size,
+                      " happy dashain pcps family skdalsjdajd",
+                      "https://api.nomadsworld.com/wp-content/uploads/2020/12/harbour-bridge-sydney-provided-min.jpg",
+                      "02 feb 2026",
+                      "PCPSNEWS"),
+                  verticallistitem(size,
+                      "title  dashain pcps family skdalsjdajd",
+                      "https://api.nomadsworld.com/wp-content/uploads/2020/12/harbour-bridge-sydney-provided-min.jpg",
+                      "02 feb 2026",
+                      "PCPSNEWS"),
+                  verticallistitem(size,
+                      "title happy  pcps family skdalsjdajd",
+                      "https://api.nomadsworld.com/wp-content/uploads/2020/12/harbour-bridge-sydney-provided-min.jpg",
+                      "02 feb 2026",
+                      "PCPSNEWS"),
+                  verticallistitem(size,
+                      "title happy dashain family ",
+                      "https://api.nomadsworld.com/wp-content/uploads/2020/12/harbour-bridge-sydney-provided-min.jpg",
+                      "02 feb 2026",
+                      "PCPSNEWS"),
+                  verticallistitem(size,
+                      "title happy",
+                      "https://api.nomadsworld.com/wp-content/uploads/2020/12/harbour-bridge-sydney-provided-min.jpg",
+                      "02 feb 2026",
+                      "PCPSNEWS"),
+
                 ],
-              )
-            ]
-          )
+              ),
+            ),
+          ),
+
         ],
       ),
     );
   }
 }
+
