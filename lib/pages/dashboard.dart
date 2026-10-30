@@ -2,6 +2,8 @@ import 'package:news_app/controller/api_call.dart';
 import 'package:news_app/pages/detailpage.dart';
 import 'package:flutter/material.dart';
 
+import '../model/news.dart';
+
 class dashboard extends StatefulWidget {
   const dashboard({super.key});
 
@@ -10,72 +12,80 @@ class dashboard extends StatefulWidget {
 }
 
 class dashboardState extends State<dashboard> {
+  Future<news?>? futurenewsdata;
   @override
-  void initState(){
+  void initState() {
     super.initState();
     ApiCall().getnewsdata();
+    futurenewsdata = ApiCall().getnewsdata();
   }
 
-  horizontallistitem(size, String title,url, date){
+  horizontallistitem(size, String title, url, date) {
     return GestureDetector(
-      onTap: (){
-        Navigator.of(context).push(
-          MaterialPageRoute<void>(
-            builder: (context) => detailpage(),
-          ),
-        );
+      onTap: () {
+        Navigator.of(context)
+            .push(MaterialPageRoute<void>(builder: (context) => detailpage()));
       },
       child: Stack(
         children: [
           Container(
-            height: size.height/4.5,
-            width: size.width/1.4,
+            height: size.height / 4.5,
+            width: size.width / 1.4,
             margin: EdgeInsets.all(15),
             decoration: BoxDecoration(
-                color: Colors.black38,
-                borderRadius: BorderRadius.circular(20)
+              color: Colors.black38,
+              borderRadius: BorderRadius.circular(20),
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
-              child: Image.network(fit: BoxFit.cover,
-                  url),
+              child: Image.network(fit: BoxFit.cover, url),
             ),
           ),
           Container(
-            height: size.height/4.5,
-            width: size.width/1.4,
+            height: size.height / 4.5,
+            width: size.width / 1.4,
             margin: EdgeInsets.all(15),
             decoration: BoxDecoration(
-                color: Colors.black54,
-                borderRadius: BorderRadius.circular(20)
+              color: Colors.black54,
+              borderRadius: BorderRadius.circular(20),
             ),
           ),
           Positioned(
             bottom: 45,
             left: 30,
             child: Container(
-              width: size.width/2,
-              child: Text(title,
-                overflow: TextOverflow.ellipsis,maxLines: 2,
-                style: TextStyle(color: Colors.white,fontSize: 16),),
+              width: size.width / 2,
+              child: Text(
+                title,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 2,
+                style: TextStyle(color: Colors.white, fontSize: 16),
+              ),
             ),
           ),
           Positioned(
             bottom: 20,
             left: 30,
-            child: Text(date,
-              style: TextStyle(color: Colors.white,fontSize: 16),),
+            child: Text(
+              date,
+              style: TextStyle(color: Colors.white, fontSize: 16),
+            ),
           ),
           Positioned(
-              bottom: 30,right: 30,
-              child: Icon(Icons.play_circle_fill_rounded,color:
-              Colors.white,size: 40,))
+            bottom: 30,
+            right: 30,
+            child: Icon(
+              Icons.play_circle_fill_rounded,
+              color: Colors.white,
+              size: 40,
+            ),
+          ),
         ],
       ),
     );
   }
 
-  static verticallistitem(size, String title, url, date, source){
+  static verticallistitem(size, String title, url, date, source) {
     return Row(
       children: [
         Stack(
@@ -85,13 +95,12 @@ class dashboardState extends State<dashboard> {
               width: 120,
               margin: EdgeInsets.all(15),
               decoration: BoxDecoration(
-                  color: Colors.black54,
-                  borderRadius: BorderRadius.circular(20)
+                color: Colors.black54,
+                borderRadius: BorderRadius.circular(20),
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
-                child: Image.network(fit: BoxFit.cover,
-                    url),
+                child: Image.network(fit: BoxFit.cover, url),
               ),
             ),
             Container(
@@ -99,10 +108,13 @@ class dashboardState extends State<dashboard> {
               width: 120,
               margin: EdgeInsets.all(15),
               child: Center(
-                child: Icon(Icons.play_circle_fill_rounded,
-                  size: 50,color: Colors.white,),
+                child: Icon(
+                  Icons.play_circle_fill_rounded,
+                  size: 50,
+                  color: Colors.white,
+                ),
               ),
-            )
+            ),
           ],
         ),
         Container(
@@ -112,28 +124,35 @@ class dashboardState extends State<dashboard> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                width: size.width/2,
-                child: Text(title
-                  ,maxLines: 2,overflow: TextOverflow.ellipsis,),
+                width: size.width / 2,
+                child: Text(
+                  title,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
               Row(
                 children: [
                   Container(
-                    padding: EdgeInsets.only(left: 10,right: 10,
-                        top: 8,bottom: 8),
-                    decoration: BoxDecoration(
-                        color: Colors.red,
-                        borderRadius: BorderRadius.circular(20)
+                    padding: EdgeInsets.only(
+                      left: 10,
+                      right: 10,
+                      top: 8,
+                      bottom: 8,
                     ),
-                    child: Text(source,style: TextStyle(color: Colors.white),),
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Text(source, style: TextStyle(color: Colors.white)),
                   ),
-                  SizedBox(width: 15,),
-                  Text(date,)
+                  SizedBox(width: 15),
+                  Text(date),
                 ],
-              )
+              ),
             ],
           ),
-        )
+        ),
       ],
     );
   }
@@ -145,75 +164,72 @@ class dashboardState extends State<dashboard> {
       appBar: AppBar(),
       body: Column(
         children: [
-          //horizontal scroll items
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: [
+          FutureBuilder(
+              future: futurenewsdata,
+              builder: (context, AsyncSnapshot<news?> snapshot){
+                switch (snapshot.connectionState){
+                  case ConnectionState.active:
+                  case ConnectionState.none:
+                  case ConnectionState.waiting:
+                    return CircularProgressIndicator();
+                  case ConnectionState.done:
+                    if (snapshot.hasData){
+                      var data = snapshot.data;
+                      // ui dekhaune
+                      return Column(
+                        children: [
+                          Container(
+                            height: size.height / 4,
+                            child: ListView.builder(
+                              padding: EdgeInsets.zero,
+                              scrollDirection: Axis.horizontal,
+                              itemCount: data!.articles!.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return horizontallistitem(
+                                  size,
+                                  data.articles![index].title!,
+                                  data.articles![index].urlToImage,
+                                  data.articles![index].publishedAt,
 
-                horizontallistitem(size,
-                    "title happy dashain pcps family skdalsjdajd",
-                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYNBJaFUb3pMu0XkkBdNkmsaBuZoYsR78LNMLGEdLPig&s=10",
-                    "03 feb 2026"),
-                horizontallistitem(size,
-                    "title happy dashain pcps family skdalsjdajd",
-                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYNBJaFUb3pMu0XkkBdNkmsaBuZoYsR78LNMLGEdLPig&s=10",
-                    "04 feb 2026"),
-                horizontallistitem(size,
-                    "title happy dashain pcps family skdalsjdajd",
-                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYNBJaFUb3pMu0XkkBdNkmsaBuZoYsR78LNMLGEdLPig&s=10",
-                    "05 feb 2026"),
-                horizontallistitem(size,
-                    "title happy dashain pcps family skdalsjdajd",
-                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYNBJaFUb3pMu0XkkBdNkmsaBuZoYsR78LNMLGEdLPig&s=10",
-                    "06 feb 2026"),
+
+
+                                );
+                              },
+                            ),
+                          ),
+                          Container(
+                            height: size.height / 1.6,
+                            child: ListView.builder(
+                              padding: EdgeInsets.zero,
+                              scrollDirection: Axis.vertical,
+                              itemCount: data!.articles!.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return verticallistitem(
+                                  size,
+                                  data.articles![index].title!.toUpperCase(),
+                                  data.articles![index].urlToImage,
+                                  data.articles![index].publishedAt!.split("T")[0],
+                                  data.articles![index].source!.name);
+
+                              }
+                            ),
+                          ),
+                        ]
+                      );
+
+                    }
+                    else{
+                      return Center (child: Text("No data found"),);
+                    }
+
+                }
+              }),
 
 
 
-              ],
-            ),
-          ),
-
-          //vertical scroll items
-          Container(
-            height: size.height/1.7,
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  verticallistitem(size,
-                      " happy dashain pcps family skdalsjdajd",
-                      "https://api.nomadsworld.com/wp-content/uploads/2020/12/harbour-bridge-sydney-provided-min.jpg",
-                      "02 feb 2026",
-                      "PCPSNEWS"),
-                  verticallistitem(size,
-                      "title  dashain pcps family skdalsjdajd",
-                      "https://api.nomadsworld.com/wp-content/uploads/2020/12/harbour-bridge-sydney-provided-min.jpg",
-                      "02 feb 2026",
-                      "PCPSNEWS"),
-                  verticallistitem(size,
-                      "title happy  pcps family skdalsjdajd",
-                      "https://api.nomadsworld.com/wp-content/uploads/2020/12/harbour-bridge-sydney-provided-min.jpg",
-                      "02 feb 2026",
-                      "PCPSNEWS"),
-                  verticallistitem(size,
-                      "title happy dashain family ",
-                      "https://api.nomadsworld.com/wp-content/uploads/2020/12/harbour-bridge-sydney-provided-min.jpg",
-                      "02 feb 2026",
-                      "PCPSNEWS"),
-                  verticallistitem(size,
-                      "title happy",
-                      "https://api.nomadsworld.com/wp-content/uploads/2020/12/harbour-bridge-sydney-provided-min.jpg",
-                      "02 feb 2026",
-                      "PCPSNEWS"),
-
-                ],
-              ),
-            ),
-          ),
 
         ],
       ),
     );
   }
 }
-
