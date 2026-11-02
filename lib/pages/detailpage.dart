@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import '../controller/api_call.dart';
+import '../core/staticfile.dart';
+import '../model/news.dart';
 import 'dashboard.dart';
+import 'package:smart_date_formatter/smart_date_formatter.dart';
 
 class detailpage extends StatefulWidget {
   const detailpage({super.key});
@@ -9,9 +13,19 @@ class detailpage extends StatefulWidget {
 }
 
 class _detailpageState extends State<detailpage> {
+  Future<news?>? futurenewsdata;
+
   @override
+  @override
+  void initState() {
+    super.initState();
+    ApiCall().getnewsdata();
+    futurenewsdata = ApiCall().getnewsdata();
+  }
+
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
+    var data = Staticfile.article;
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -23,16 +37,21 @@ class _detailpageState extends State<detailpage> {
                   height: size.height/4,
                   width: size.width,
                   child: Image.network(fit: BoxFit.cover,
-                      "https://www.popsci.com/wp-content/uploads/2018/12/10/QKOPUFKJMVV7JE2YNBCV2FILFQ.jpg?quality=85&w=2048")
+                      data!.urlToImage!)
                 ),
                 Container(
                     height: size.height/4,
                     width: size.width,
                     color: Colors.black54,
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Icon(Icons.arrow_back, color: Colors.white, size: 40,),
+                GestureDetector(
+                  onTap: (){
+                    Navigator.pop(context);
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Icon(Icons.arrow_back, color: Colors.white, size: 40,),
+                  ),
                 ),
                 Positioned(
                   right: 10,
@@ -56,18 +75,18 @@ class _detailpageState extends State<detailpage> {
               padding: const EdgeInsets.all(15.0),
               child: Column(
                 children: [
-                  Text("It's Dashain Season but my college is not giving vacation. I wonder if it's a Dashain season or not", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold), maxLines: 2, overflow: TextOverflow.ellipsis,),
+                  Text(data.title!, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold), maxLines: 2, overflow: TextOverflow.ellipsis,),
                   SizedBox(height: 10,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("Author: Supriya Shrestha"),
-                      Text("Date: 12th October, 2026")
+                      Text(data.author!),
+                      Text(Staticfile.dateconverter(data.publishedAt!))
                     ],
 
                   ),
                   SizedBox(height: 10,),
-                  Text ("jsdhuirwtuey buvu vgtuioatugb  huwy8qouryteot tyi hgiggoffofutyuyuuiry  ueiutieyey")
+                  Text (data.description!)
                 ]
               ),
             ),
@@ -80,30 +99,49 @@ class _detailpageState extends State<detailpage> {
                 Text("Related Videos", style: TextStyle(fontSize: 18,),
                 )],
             ),
-          dashboardState.verticallistitem(
-            size,
-              "title happy",
-              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvXmMUWhXhJXuZz3uq6OHnNsTR3DJ9fRM-4be8UXxg_echrLxTHN8tibg&s=10",
-              "02 feb 2026",
-              "PCPSNEWS"),
-            dashboardState.verticallistitem(
-                size,
-                "title happy",
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvXmMUWhXhJXuZz3uq6OHnNsTR3DJ9fRM-4be8UXxg_echrLxTHN8tibg&s=10",
-                "02 feb 2026",
-                "PCPSNEWS"),
-            dashboardState.verticallistitem(
-                size,
-                "title happy",
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvXmMUWhXhJXuZz3uq6OHnNsTR3DJ9fRM-4be8UXxg_echrLxTHN8tibg&s=10",
-                "02 feb 2026",
-                "PCPSNEWS"),
-            dashboardState.verticallistitem(
-                size,
-                "title happy",
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvXmMUWhXhJXuZz3uq6OHnNsTR3DJ9fRM-4be8UXxg_echrLxTHN8tibg&s=10",
-                "02 feb 2026",
-                "PCPSNEWS"),
+            FutureBuilder(
+                future: futurenewsdata,
+                builder: (context, AsyncSnapshot<news?> snapshot){
+                  switch (snapshot.connectionState){
+                    case ConnectionState.active:
+                    case ConnectionState.none:
+                    case ConnectionState.waiting:
+                      return CircularProgressIndicator();
+                    case ConnectionState.done:
+                      if (snapshot.hasData){
+                        var data = snapshot.data;
+                        // ui dekhaune
+                        return Column(
+                            children: [
+
+                              Container(
+                                height: size.height / 1.6,
+                                child: ListView.builder(
+                                    padding: EdgeInsets.zero,
+                                    scrollDirection: Axis.vertical,
+                                    itemCount: data!.articles!.length,
+                                    itemBuilder: (BuildContext context, int index) {
+                                      return dashboardState.verticallistitem(
+                                          context, size,
+                                          data.articles![index].title!.toUpperCase(),
+                                          data.articles![index].urlToImage,
+                                          data.articles![index].publishedAt!.split("T")[0],
+                                          data.articles![index].source!.name,
+                                          data.articles![index]);
+
+                                    }
+                                ),
+                              ),
+                            ]
+                        );
+
+                      }
+                      else{
+                        return Center (child: Text("No data found"),);
+                      }
+
+                  }
+                }),
           ],
 
         ),
