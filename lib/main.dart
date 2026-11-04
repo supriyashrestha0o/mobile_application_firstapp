@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/pages/dashboard.dart';
 
+import 'chat app/pages/loginPage.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -17,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const dashboard()
+      home: loginPage(),
     );
   }
 }
